@@ -1,29 +1,32 @@
 class Node(object):
     #ajustar variaveis locais na classe nao globais
     info = None
-    esquerdaNode = None 
+    esquerdaNode = None
     direitaNode = None
 
     def treeNode(self, nodeInfo):
-        nonlocal info
-
-        info = nodeInfo
+        self.info = nodeInfo
+        print(Node.info, "inserido Node Class")
 
     def insereNode(self, insertValue):
-        nonlocal info, esquerdaNode, direitaNode
-        print(type(esquerdaNode), "\n")
-        if insertValue < info:
-            if esquerdaNode is None:
-                esquerdaNode = Node()
-                esquerdaNode.treeNode(insertValue)
+        print("\n",self.info, " NODE ENTRADA INSERE\n")
+        print("\n",type(self.esquerdaNode), " TYPE NODE ESQUERDA\n")
+        if insertValue < self.info:
+            if self.esquerdaNode is None:
+                self.esquerdaNode = Node()
+                print(type(self.esquerdaNode), "TYPE ESQUERDA NODE POS DEFICINICAO NODE()")
+                self.esquerdaNode.treeNode(insertValue)
+                print(self.esquerdaNode.info, "ESQUERDA NODE INFO")
+                print(self.info)
             else:
-                esquerdaNode = Node()
-                esquerdaNode.insereNode(insertValue)
+                self.esquerdaNode.insereNode(insertValue)
 
-        elif insertValue > info:
-            if direitaNode is None:
-                direitaNode = Node()
-                direitaNode.treeNode(insertValue)
+        elif insertValue > self.info:
+            if self.direitaNode is None:
+                self.direitaNode = Node()
+                print(type(self.direitaNode), "TYPE DIREITA NODE POS DEFICINICAO NODE()")
+                self.direitaNode.treeNode(insertValue)
+                print(self.direitaNode.info, "DIREITA NODE INFO")
+                print(self.info)
             else:
-                direitaNode = Node()
-                direitaNode.insereNode(insertValue)
+                self.direitaNode.insereNode(insertValue)

@@ -1,39 +1,32 @@
 from Node import Node
 
-#nao cria novo node, tem que por na funcao
-node = Node()
-raiz = None
+class Tree(object):
 
-class Three(object):
+    raiz = None
 
     def insereNode(self, insertValue):
-        global raiz
-        global node
-
-        if raiz is None:
-            raiz = Node()
-            raiz.treeNode(insertValue)
-            print(insertValue, "inserido na raiz")
+        if self.raiz is None:
+            self.raiz = Node()
+            self.raiz.treeNode(insertValue)
+            print(insertValue, "inserido na raiz TREE")
         else:
-            raiz.insereNode(insertValue)
-            print(insertValue, "inserido")
+            self.raiz.insereNode(insertValue)
+            print(insertValue, "inserido TREE")
 
     def preorderTraversal(self):
-        global raiz
-
-        self.preorderHelper(raiz)
+        self.preorderHelper(self.raiz)
 
     def preorderHelper(self, node):
         if node is None:
             return
 
-        print(node.info + " , ")
+        print(node.info, " , ")
 
         self.preorderHelper(node.esquerdaNode)
 
         self.preorderHelper(node.direitaNode)
 
-    def inorderTraversal(self):
+    """def inorderTraversal(self):
         global raiz
 
         inorderHelper(raiz)
@@ -61,4 +54,4 @@ class Three(object):
 
         postorderHelper(node.direitaNode)
 
-        System.out.print(node.info + " , ")
+        System.out.print(node.info + " , ")"""
