@@ -14,4 +14,9 @@ Only python
 
 ## What I do?
 
-First I get some NFL data, how musicians was singing on Super Bowl (number of musics played, audience, etc.), Super Bowl team's (winners, difference between teams in final, etc.) and TV (audience during Final, etc.).
+Steps:
+  <ul>
+    <li>I trying to add a data on code making a binary tree (Was made).</li>
+    <li>Now im trying to add a expression tree, i will give a full expression and code will interpret it, and make a expression tree</li>
+  </ul>
+
