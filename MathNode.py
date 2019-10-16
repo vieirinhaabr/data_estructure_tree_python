@@ -16,13 +16,14 @@ class FuncCalc(object):
             self.nextFunc = FuncCalc()
             self.nextFunc.inserirFunc(numberOne, numberTwo, operator)
 
-    def contarFunc(self, id=0):
-        self.contarFunc().contarFuncDivs(id)
-        def contarFuncDivs(id):
-            if self.numberOne != None:
-                id += 1
-                self.nextFunc.contarFunc()
-            else:
-                return id
-            
-        return id
+    def contarFunc(self):
+        if self.numberOne != None:
+            return 1 + self.contarFuncDivs()
+        else:
+            return 0
+    
+    def contarFuncDivs(self):
+        if self.nextFunc != None:
+            return 1 + self.nextFunc.contarFuncDivs()
+        else:
+            return 0

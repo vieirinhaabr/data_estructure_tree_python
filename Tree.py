@@ -92,5 +92,5 @@ class Tree(object):
         
         print(self.funcRaiz.numberOne, self.funcRaiz.operator, self.funcRaiz.numberTwo)
 
-    def passarMathtoNode():
+    def passarMathtoNode(self):
         print(self.funcRaiz.contarFunc())
