@@ -1,8 +1,14 @@
 from Node import Node
+from MathNode import FuncCalc
 
 class Tree(object):
 
     raiz = None
+    sepFunc = None
+    numberOne = None
+    numberTwo = None
+    operator = None
+    funcRaiz = None
 
     def insereNode(self, insertValue):
         if self.raiz is None:
@@ -11,7 +17,7 @@ class Tree(object):
         else:
             self.raiz.insereNode(insertValue)
 
-    def preorderTraversal(self):
+    """def preorderTraversal(self):
         self.preorderHelper(self.raiz)
 
     def preorderHelper(self, node):
@@ -48,4 +54,43 @@ class Tree(object):
 
         self.preorderHelper(node.direitaNode)
 
-        print(node.info, " , ", end = '')
+        print(node.info, " , ", end = '')"""
+
+    #(3+5)+(5+5)
+
+    def resolveMath(self, question):
+        status = False
+        self.funcRaiz = FuncCalc()
+
+        midQuestion = int(len(question) / 2)
+        
+        self.raiz = question[midQuestion]
+
+        for thing in question:
+            if thing != self.raiz:
+                status = True
+            elif thing == self.raiz:
+                status = False
+                self.funcRaiz.inserirFunc(self.numberOne, self.numberTwo, self.operator)
+                self.numberOne = None
+                self.numberTwo = None
+                self.operator = None
+            if status == True:
+                if (thing != '+') and (thing != '-') and (thing != '*') and (thing != '/'):
+                    if self.numberOne is None:
+                        self.numberOne = thing
+                    else:
+                        self.numberTwo = thing
+                else:
+                    self.operator = thing
+        if status == True:
+            status = False
+            self.funcRaiz.inserirFunc(self.numberOne, self.numberTwo, self.operator)
+            self.numberOne = None
+            self.numberTwo = None
+            self.operator = None
+        
+        print(self.funcRaiz.numberOne, self.funcRaiz.operator, self.funcRaiz.numberTwo)
+
+    def passarMathtoNode():
+        print(self.funcRaiz.contarFunc())

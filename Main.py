@@ -1,9 +1,14 @@
 from Tree import Tree
 
 if __name__ == "__main__":
+
     Arvore = Tree()
 
-    print("Inserindo Arvore ...")
+    Arvore.resolveMath(question='3*5+5/5')
+    Arvore.passarMathtoNode()
+    #Arvore.resolveMath(question='3*5*5+5')
+
+    """print("Inserindo Arvore ...")
     Arvore.insereNode(7)
     Arvore.insereNode(6)
     Arvore.insereNode(5)
@@ -16,4 +21,4 @@ if __name__ == "__main__":
 
     print("inorderTraversal \n")
     print("Arvore ", end='')
-    Arvore.inorderTraversal()
+    Arvore.inorderTraversal()"""
