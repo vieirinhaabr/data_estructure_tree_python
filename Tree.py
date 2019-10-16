@@ -8,10 +8,8 @@ class Tree(object):
         if self.raiz is None:
             self.raiz = Node()
             self.raiz.treeNode(insertValue)
-            print(insertValue, "inserido na raiz TREE")
         else:
             self.raiz.insereNode(insertValue)
-            print(insertValue, "inserido TREE")
 
     def preorderTraversal(self):
         self.preorderHelper(self.raiz)
@@ -20,38 +18,34 @@ class Tree(object):
         if node is None:
             return
 
-        print(node.info, " , ")
+        print(node.info, " , ", end = '')
 
         self.preorderHelper(node.esquerdaNode)
 
         self.preorderHelper(node.direitaNode)
 
-    """def inorderTraversal(self):
-        global raiz
-
-        inorderHelper(raiz)
+    def inorderTraversal(self):
+        self.inorderHelper(self.raiz)
 
     def inorderHelper(self, node):
         if node is None:
             return
 
-        inorderHelper(node.esquerdaNode)
+        self.preorderHelper(node.esquerdaNode)
 
-        System.out.print(node.info + " , ")
+        print(node.info, " , ", end = '')
 
-        inorderHelper(node.direitaNode)
+        self.preorderHelper(node.direitaNode)
 
     def postorderTraversal(self):
-        global raiz
-
-        postorderHelper(raiz)
+        self.postorderHelper(self.raiz)
 
     def postorderHelper(self, node):
         if node is None:
             return
 
-        postorderHelper(node.esquerdaNode)
+        self.preorderHelper(node.esquerdaNode)
 
-        postorderHelper(node.direitaNode)
+        self.preorderHelper(node.direitaNode)
 
-        System.out.print(node.info + " , ")"""
+        print(node.info, " , ", end = '')

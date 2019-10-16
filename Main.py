@@ -14,6 +14,6 @@ if __name__ == "__main__":
     Arvore.insereNode(55)
     Arvore.insereNode(99)
 
-    print("Preorder trasversal \n")
-    print("Arvore ")
-    Arvore.preorderTraversal()
+    print("inorderTraversal \n")
+    print("Arvore ", end='')
+    Arvore.inorderTraversal()
