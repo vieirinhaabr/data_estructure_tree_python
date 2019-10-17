@@ -17,6 +17,9 @@ class Tree(object):
         else:
             self.raiz.insereNode(insertValue)
 
+    def printValue(self):
+        print(self.raiz.esquerdaNode.info)
+
     """def preorderTraversal(self):
         self.preorderHelper(self.raiz)
 
@@ -64,7 +67,8 @@ class Tree(object):
 
         midQuestion = int(len(question) / 2)
         
-        self.raiz = question[midQuestion]
+        self.raiz = Node()
+        self.raiz.info = question[midQuestion]
 
         for thing in question:
             if thing != self.raiz:
@@ -94,3 +98,19 @@ class Tree(object):
 
     def passarMathtoNode(self):
         print(self.funcRaiz.contarFunc())
+
+    def criarArvore(self):
+        if self.funcRaiz.contarFunc() == 0:
+            print("Não há expressao cadastrada")
+        else:
+            if self.raiz == None:
+                print("Raiz não encontrada")
+            else:
+                quant_exp = int(self.funcRaiz.contarFunc() / 2)
+                i = 0
+                while i < quant_exp:
+                    truple_exp = self.funcRaiz.returnExp(i)
+                    if truple_exp != 'empty':
+                        self.raiz.insereNode_Expression_Esquerda(truple_exp)
+                    i=+ 1
+                print("Expressões cadastradas")

@@ -5,7 +5,8 @@ if __name__ == "__main__":
     Arvore = Tree()
 
     Arvore.resolveMath(question='3*5+5/5')
-    Arvore.passarMathtoNode()
+    Arvore.criarArvore()
+    Arvore.printValue()
     #Arvore.resolveMath(question='3*5*5+5')
 
     """print("Inserindo Arvore ...")
