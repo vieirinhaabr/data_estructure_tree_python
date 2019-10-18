@@ -1,44 +1,43 @@
 class Node(object):
-    #ajustar variaveis locais na classe nao globais
-    info = None
-    esquerdaNode = None
-    direitaNode = None
+	info = None
+	leftNode = None
+	rightNode = None
 
-    def treeNode(self, nodeInfo):
-        self.info = nodeInfo
+	def treeNode(self, nodeInfo):
+		self.info = nodeInfo
 
-    def expression_Node(self, truple_expression):
-        self.esquerdaNode = Node()
-        self.direitaNode = Node()
-        self.info = truple_expression[0]
-        self.esquerdaNode.info = truple_expression[1]
-        self.direitaNode.info = truple_expression[2]
+	def insertNode(self, insertValue):
+		if insertValue < self.info:
+			if self.leftNode is None:
+				self.leftNode = Node()
+				self.leftNode.treeNode(insertValue)
+			else:
+				self.leftNode.insertNode(insertValue)
 
-    def insereNode(self, insertValue):
-        if insertValue < self.info:
-            if self.esquerdaNode is None:
-                self.esquerdaNode = Node()
-                self.esquerdaNode.treeNode(insertValue)
-            else:
-                self.esquerdaNode.insereNode(insertValue)
+		elif insertValue > self.info:
+			if self.rightNode is None:
+				self.rightNode = Node()
+				self.rightNode.treeNode(insertValue)
+			else:
+				self.rightNode.insertNode(insertValue)
 
-        elif insertValue > self.info:
-            if self.direitaNode is None:
-                self.direitaNode = Node()
-                self.direitaNode.treeNode(insertValue)
-            else:
-                self.direitaNode.insereNode(insertValue)
+	def expression_Node(self, truple_expression):
+		self.leftNode = Node()
+		self.rightNode = Node()
+		self.info = truple_expression[0]
+		self.leftNode.info = truple_expression[1]
+		self.rightNode.info = truple_expression[2]
 
-    def insereNode_Expression_Esquerda(self, truple_expression):
-        if self.esquerdaNode is None:
-            self.esquerdaNode = Node()
-            self.esquerdaNode.expression_Node(truple_expression)
-        else:
-            self.esquerdaNode.insereNode_Expression_Esquerda(truple_expression)
+	def insertNode_Expression_left(self, truple_expression):
+		if self.leftNode is None:
+			self.leftNode = Node()
+			self.leftNode.expression_Node(truple_expression)
+		else:
+			self.leftNode.insertNode_Expression_left(truple_expression)
 
-    def insereNode_Expression_Direita(self, truple_expression):
-        if self.direitaNode is None:
-            self.direitaNode = Node()
-            self.direitaNode.expression_Node(truple_expression)
-        else:
-            self.direitaNode.insereNode_Expression_Direita(truple_expression)
+	def insertNode_Expression_right(self, truple_expression):
+		if self.rightNode is None:
+			self.rightNode = Node()
+			self.rightNode.expression_Node(truple_expression)
+		else:
+			self.rightNode.insertNode_Expression_right(truple_expression)

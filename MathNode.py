@@ -1,4 +1,4 @@
-class FuncCalc(object):
+class ExpMath(object):
     numberOne = None
     numberTwo = None
     operator = None
@@ -11,32 +11,32 @@ class FuncCalc(object):
         self.operator = operator
         self.id = id
 
-    def inserirFunc(self, numberOne, numberTwo, operator, id=0):
+    def insertFunc(self, numberOne, numberTwo, operator, id=0):
         if self.numberOne is None:
             self.newFunc(numberOne, numberTwo, operator, id)
         else:
             id += 1
-            self.nextFunc = FuncCalc()
-            self.nextFunc.inserirFunc(numberOne, numberTwo, operator, id)
+            self.nextFunc = ExpMath()
+            self.nextFunc.insertFunc(numberOne, numberTwo, operator, id)
 
-    def contarFunc(self):
-        if self.numberOne != None:
-            return 1 + self.contarFuncDivs()
+    def countFunc_initializate(self):
+        if self.numberOne is not None:
+            return 1 + self.countFunc_continue()
         else:
             return 0
-    
-    def contarFuncDivs(self):
-        if self.nextFunc != None:
-            return 1 + self.nextFunc.contarFuncDivs()
+
+    def countFunc_continue(self):
+        if self.nextFunc is not None:
+            return 1 + self.nextFunc.countFunc_continue()
         else:
             return 0
-    
+
     def returnExp(self, id):
         if self.id == id:
-            return (self.operator, self.numberOne, self.numberTwo)
+            return self.operator, self.numberOne, self.numberTwo
         else:
-            if nextFunc != None:
-                self.nextFunc.returnExp(id)
+            if self.nextFunc is not None:
+                return self.nextFunc.returnExp(id)
             else:
-                print("erro ao encontrar função")
-                return ('empty')
+                print("error when trying to find function")
+                return 'empty'

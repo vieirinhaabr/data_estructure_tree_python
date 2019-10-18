@@ -1,27 +1,23 @@
 from Node import Node
-from MathNode import FuncCalc
+from MathNode import ExpMath
+
 
 class Tree(object):
-
-    raiz = None
-    sepFunc = None
+    root = None
     numberOne = None
     numberTwo = None
     operator = None
-    funcRaiz = None
+    funcroot = None
 
-    def insereNode(self, insertValue):
-        if self.raiz is None:
-            self.raiz = Node()
-            self.raiz.treeNode(insertValue)
+    """def insertNode(self, insertValue):
+        if self.root is None:
+            self.root = Node()
+            self.root.treeNode(insertValue)
         else:
-            self.raiz.insereNode(insertValue)
+            self.root.insertNode(insertValue)
 
-    def printValue(self):
-        print(self.raiz.esquerdaNode.info)
-
-    """def preorderTraversal(self):
-        self.preorderHelper(self.raiz)
+    def preorderTraversal(self):
+        self.preorderHelper(self.root)
 
     def preorderHelper(self, node):
         if node is None:
@@ -29,57 +25,54 @@ class Tree(object):
 
         print(node.info, " , ", end = '')
 
-        self.preorderHelper(node.esquerdaNode)
+        self.preorderHelper(node.leftNode)
 
-        self.preorderHelper(node.direitaNode)
+        self.preorderHelper(node.rightNode)"""
 
     def inorderTraversal(self):
-        self.inorderHelper(self.raiz)
+        self.inorderHelper(self.root)
 
     def inorderHelper(self, node):
         if node is None:
             return
 
-        self.preorderHelper(node.esquerdaNode)
+        self.inorderHelper(node.leftNode)
 
         print(node.info, " , ", end = '')
 
-        self.preorderHelper(node.direitaNode)
+        self.inorderHelper(node.rightNode)
 
-    def postorderTraversal(self):
-        self.postorderHelper(self.raiz)
+    """def postorderTraversal(self):
+        self.postorderHelper(self.root)
 
     def postorderHelper(self, node):
         if node is None:
             return
 
-        self.preorderHelper(node.esquerdaNode)
+        self.postorderHelper(node.leftNode)
 
-        self.preorderHelper(node.direitaNode)
+        self.postorderHelper(node.rightNode)
 
         print(node.info, " , ", end = '')"""
 
-    #(3+5)+(5+5)
+    # (3+5)+(5+5)
 
     def resolveMath(self, question):
         status = False
-        self.funcRaiz = FuncCalc()
+
+        self.funcroot = ExpMath()
+        self.root = Node()
 
         midQuestion = int(len(question) / 2)
-        
-        self.raiz = Node()
-        self.raiz.info = question[midQuestion]
+        self.root.info = question[midQuestion]
 
         for thing in question:
-            if thing != self.raiz:
-                status = True
-            elif thing == self.raiz:
+            if thing == self.root.info:
                 status = False
-                self.funcRaiz.inserirFunc(self.numberOne, self.numberTwo, self.operator)
-                self.numberOne = None
-                self.numberTwo = None
-                self.operator = None
-            if status == True:
+                self.insert_math()
+            else:
+                status = True
+            if status:
                 if (thing != '+') and (thing != '-') and (thing != '*') and (thing != '/'):
                     if self.numberOne is None:
                         self.numberOne = thing
@@ -87,30 +80,37 @@ class Tree(object):
                         self.numberTwo = thing
                 else:
                     self.operator = thing
-        if status == True:
-            status = False
-            self.funcRaiz.inserirFunc(self.numberOne, self.numberTwo, self.operator)
-            self.numberOne = None
-            self.numberTwo = None
-            self.operator = None
-        
-        print(self.funcRaiz.numberOne, self.funcRaiz.operator, self.funcRaiz.numberTwo)
+        if status:
+            self.insert_math()
 
-    def passarMathtoNode(self):
-        print(self.funcRaiz.contarFunc())
+    def insert_math(self):
+        self.funcroot.insertFunc(self.numberOne, self.numberTwo, self.operator)
+        self.numberOne = None
+        self.numberTwo = None
+        self.operator = None
 
-    def criarArvore(self):
-        if self.funcRaiz.contarFunc() == 0:
-            print("Não há expressao cadastrada")
+    def criarTree(self):
+        if self.funcroot.countFunc_initializate() == 0:
+            print("No operation entrance")
         else:
-            if self.raiz == None:
-                print("Raiz não encontrada")
+            if self.root is None:
+                print("Root dont find")
             else:
-                quant_exp = int(self.funcRaiz.contarFunc() / 2)
+                count_right = int(self.funcroot.countFunc_initializate())
+
+                count_left = int(count_right / 2)
                 i = 0
-                while i < quant_exp:
-                    truple_exp = self.funcRaiz.returnExp(i)
+                while i < count_left:
+                    truple_exp = self.funcroot.returnExp(i)
                     if truple_exp != 'empty':
-                        self.raiz.insereNode_Expression_Esquerda(truple_exp)
-                    i=+ 1
-                print("Expressões cadastradas")
+                        self.root.insertNode_Expression_left(truple_exp)
+                        print("Expression transformed in Node -> Successful")
+                    i = + 1
+
+                i = count_left
+                while i < count_right:
+                    truple_exp = self.funcroot.returnExp(i)
+                    if truple_exp != 'empty':
+                        self.root.insertNode_Expression_right(truple_exp)
+                        print("Expression transformed in Node -> Successful")
+                    i = i + 1

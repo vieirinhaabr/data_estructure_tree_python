@@ -1,25 +1,24 @@
+
 from Tree import Tree
 
 if __name__ == "__main__":
 
-    Arvore = Tree()
+	Tree = Tree()
 
-    Arvore.resolveMath(question='3*5+5/5')
-    Arvore.criarArvore()
-    Arvore.printValue()
-    #Arvore.resolveMath(question='3*5*5+5')
+	Tree.resolveMath(question='3*5+5/5')
+	Tree.criarTree()
 
-    """print("Inserindo Arvore ...")
-    Arvore.insereNode(7)
-    Arvore.insereNode(6)
-    Arvore.insereNode(5)
-    Arvore.insereNode(4)
-    Arvore.insereNode(25)
-    Arvore.insereNode(2)
-    Arvore.insereNode(88)
-    Arvore.insereNode(55)
-    Arvore.insereNode(99)
+	"""print("Inserting Tree ...")
+	Tree.insertNode(7)
+	Tree.insertNode(6)
+	Tree.insertNode(5)
+	Tree.insertNode(4)
+	Tree.insertNode(25)
+	Tree.insertNode(2)
+	Tree.insertNode(88)
+	Tree.insertNode(55)
+	Tree.insertNode(99)"""
 
-    print("inorderTraversal \n")
-    print("Arvore ", end='')
-    Arvore.inorderTraversal()"""
+	print("\ninorderTraversal \n")
+	print("Tree ", end='')
+	Tree.inorderTraversal()
