@@ -4,7 +4,7 @@
 
 #### Project was made based on my classroom exercices
 
-<h1 style"align-text=center;"> Project: Binary Tree (i will be add to it, a Expression Tree) </h1>
+<h1 style"align-text=center;"> Project: Data Structure Tree (Binary tree, and Expression tree) </h1>
  A simple project about Data Structure and Algorithms.
  
 ## What I use?
