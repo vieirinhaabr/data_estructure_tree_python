@@ -1,6 +1,6 @@
 <p align="center">
   <img width="200" height="200" style="align=center;" src="https://yourbasic.org/algorithms/tree.png">
-  <img width="200" height="200" style="align=center;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
+  <img width="150" height="150" style="align=center;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
 </p>
 
 #### Project was made based on my classroom exercices
@@ -25,7 +25,7 @@ Steps:
         <li>To made it, i have a idea to give a expression splited by brackets, and try to force the code in recognize this brackets and broke the expressions in small expressions</li>
         <li>Ex.:</li>
           <ul>
-          <li>A expression -> **[3 * 5] + 4 - [8 - 8]**, on code will be recognize how **X = '3 * 5'**, **Z = 'X + 4 - Y'** and **Y = '8 - 8'** </li>
+          <li>A expression -> [3 * 5] + 4 - [8 - 8], on code will be recognize how X = '3 * 5', Z = 'X + 4 - Y' and Y = '8 - 8' </li>
         </ul>
       </ul>
   </ul>
